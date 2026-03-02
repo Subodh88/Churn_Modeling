@@ -1,0 +1,16 @@
+# Data files
+*.csv
+
+# Documents
+*.pdf
+*.doc
+*.docx
+
+# Serialized models
+*.joblib
+
+#Images
+*.png
+*.jpg
+*.jpeg
+*.gif

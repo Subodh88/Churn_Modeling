@@ -1,0 +1,30 @@
+# Paths to input and output data
+paths:
+  raw_data: data/raw/advanced_case_study_data.csv
+  processed_data: data/processed/retention_model_data.csv
+  outputs_dir: outputs
+
+# Model and experiment settings
+model:
+  rsf_random_state: 42
+  traintest_split_random_state: 50
+  rsf_model_name: 'model/rsf_model.joblib'
+
+variables:
+  duration_col: 'churn_duration_months'
+  event_col: 'churned'
+  treatment_col: 'campaign_cohort'
+  covariates: ['participant_age','marketing_channel','extra_draws_per_year','add_ons','payment_method','failed_payments_12m','monthly_spend_estimated','donation_share_charity','service_contacts_12m','complaints_12m','lifetime_wins','num_wins_last_3m','num_wins_last_6m','num_wins_last_9m','num_wins_last_12m','time_to_first_win','time_since_last_win','avg_time_between_wins']
+
+causal_inference:
+  dp_variables_for_treatment: ['churned', 'revenue_next_12m_observed']
+  control_variables_for_treatment: ['participant_age', 'marketing_channel','payment_method', 'failed_payments_12m','monthly_spend_estimated', 'donation_share_charity', 'service_contacts_12m','complaints_12m', 'lifetime_wins']
+
+lifetime_value_variables:
+  annual_discount_rate: 0.1
+
+treatment_costs:
+  variant_a: 10
+  variant_b: 20
+  max_treatable_percentage: 20
+  time_horizon_months_for_customer_lifetime_value: 12
